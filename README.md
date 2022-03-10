@@ -12,7 +12,9 @@ QRコードを同時に印刷するので再アクセスしやすい
 
 # Usage
 
-chromeブラウザのアドレス欄の右側に表示されるアイコンをクリックすれば、ページ最上部右側にQRが表示される
+chromeブラウザのアドレス欄の右側に表示されるアイコンをクリックすれば、指定した位置（デフォルトはページ最上部右側）にQRが表示される
+
+表示されたQRコードをダブルクリックすると消える
 
 # Author
 
@@ -21,7 +23,7 @@ chromeブラウザのアドレス欄の右側に表示されるアイコンを�
 # License
 ライセンスを明示する
 
-"hoge" is under [MIT license](https://en.wikipedia.org/wiki/MIT_License).
+"URL2QRinserter" is under [MIT license](https://en.wikipedia.org/wiki/MIT_License).
 
 # 参考サイト
 https://goqr.me/api/doc/create-qr-code/

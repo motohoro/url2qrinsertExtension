@@ -3,7 +3,7 @@
     "description":"URLをQRコードにしてページに埋め込む",
 	"manifest_version": 3,
 	"version": "0.1",
-	"permissions": ["activeTab","scripting"],
+	"permissions": ["storage","activeTab","scripting"],
 	"background": {
 		"service_worker": "url2qr.js"
 	},
@@ -19,6 +19,10 @@
         "48":"/images/icon.png",
         "128":"/images/icon.png"
     },
+    "options_ui": {
+        "page": "options.html",
+        "open_in_tab": false
+      },
 	"action": {
     }
 }

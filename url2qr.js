@@ -9,12 +9,20 @@ function showQR() {
     if(!thisurl.startsWith("http")){
         return
     }
+    if(document.getElementById("thisurlqrdiv")){
+        document.getElementById("thisurlqrdiv").remove();
+    }
+    let position="screentop";
+      
     qrgenerator = "https://api.qrserver.com/v1/create-qr-code/?size=150x150&margin=20&data=" + thisurl;
 //    qrgenerator = chrome.runtime.getURL("images/106_h_24.png");
     let parent = document.getElementsByTagName("body")[0];
     let child = document.createElement("div");
     child.draggable="true";
     child.id="thisurlqrdiv";
+    child.addEventListener("dblclick",function(e){
+        child.remove();
+    });
     let childchild = document.createElement("img");
     childchild.src = qrgenerator;
     childchild.alt = "URL2QRinserter"
@@ -23,8 +31,23 @@ function showQR() {
     childchild.style="position:absolute;z-index:2147483646;border:1px solid #000000;filter:none;"
     child.append(childchild);
     parent.appendChild(child);
-    childchild.style.top="1px"
-    childchild.style.right="1px"
+    position_int=0;
+    chrome.storage.sync.get({
+        defaultposition: 'screentop',
+    }, function(items) {
+        position = items.defaultposition;
+        if(position=="screentop"){
+            position_top = window.scrollY;
+        }else if(position=="pagetop"){
+            position_top = 1;
+        }else if(position=="pagebottom"){
+            position_top = document.documentElement.scrollHeight;
+        }
+        childchild.style.top=position_top+"px";
+        childchild.style.right="1px"
+        scrollTo(0,position_top);
+    });
+
     let body1 = document.getElementsByTagName("body")[0];
     
     body1.addEventListener('dragstart',function(e){
